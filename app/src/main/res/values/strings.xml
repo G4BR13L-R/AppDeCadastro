@@ -15,4 +15,6 @@
     <string name="clientes">Clientes</string>
     <string name="sair">Sair</string>
     <string name="fornecedores">Fornecedores</string>
+    <string name="quantidade">Quantidade</string>
+    <string name="pre_o">Preço</string>
 </resources>
