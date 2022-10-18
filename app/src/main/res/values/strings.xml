@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">App de Cadastro</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
+    <string name="email">Email</string>
+    <string name="salvar">Salvar</string>
+    <string name="nome_fantasia">Nome Fantasia</string>
+    <string name="marca">Marca</string>
+    <string name="data_de_validade">Data de Validade</string>
 </resources>
