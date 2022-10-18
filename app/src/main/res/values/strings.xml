@@ -9,4 +9,10 @@
     <string name="nome_fantasia">Nome Fantasia</string>
     <string name="marca">Marca</string>
     <string name="data_de_validade">Data de Validade</string>
+    <string name="listagem">Listagem</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="produtos">Produtos</string>
+    <string name="clientes">Clientes</string>
+    <string name="sair">Sair</string>
+    <string name="fornecedores">Fornecedores</string>
 </resources>
