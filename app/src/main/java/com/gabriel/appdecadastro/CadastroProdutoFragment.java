@@ -7,6 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.gabriel.appdecadastro.bancoDeDados.DBHelper;
+import com.gabriel.appdecadastro.bancoDeDados.ProdutoDB;
+import com.gabriel.appdecadastro.entidades.Produto;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,15 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class CadastroProdutoFragment extends Fragment {
+
+    EditText campoNomeProduto;
+    EditText campoMarca;
+    EditText campoQuantidade;
+    EditText campoPreco;
+
+    Button botaoSalvar;
+
+    ProdutoDB produtoDB;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +74,37 @@ public class CadastroProdutoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_produto, container, false);
+        View view = inflater.inflate(R.layout.fragment_cadastro_produto, container, false);
+
+        DBHelper db = new DBHelper(getActivity());
+        produtoDB = new ProdutoDB(db);
+
+        campoNomeProduto = view.findViewById(R.id.nomeProduto);
+        campoMarca = view.findViewById(R.id.marcaProduto);
+        campoQuantidade = view.findViewById(R.id.quantidadeProduto);
+        campoPreco = view.findViewById(R.id.precoProduto);
+        botaoSalvar = view.findViewById(R.id.salvarProduto);
+
+        botaoSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Produto produto = new Produto();
+
+                produto.setNome(campoNomeProduto.getText().toString());
+                produto.setMarca(campoMarca.getText().toString());
+                produto.setQuantidade(Integer.parseInt(campoQuantidade.getText().toString()));
+                produto.setPreco(Float.parseFloat(campoPreco.getText().toString()));
+
+                produtoDB.inserir(produto);
+                campoNomeProduto.setText("");
+                campoMarca.setText("");
+                campoQuantidade.setText("");
+                campoPreco.setText("");
+                ListaProdutoFragment.atualizarDadosProduto();
+                Toast.makeText(getActivity(), "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return view;
     }
 }
